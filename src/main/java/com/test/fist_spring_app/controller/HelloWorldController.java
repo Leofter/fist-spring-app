@@ -39,4 +39,10 @@ public class HelloWorldController {
     public String helloWorldPostWithID(@PathVariable("id") String id, @RequestBody User body){
         return "Hello world " + body.getName() + id;
     }
+
+    @PostMapping("/{id}")
+    // agora  ao inves de retirar parametros da URL estou retirando parametros de consulta da URL (o que fica depois da interrogacao http//dsads31.com/dsadsa?filter=Leonardo)
+    public String helloWorldPostWithIDAndFilter(@PathVariable("id") String id, @RequestParam(value = "filter", defaultValue = "nenhum") String filter    @RequestBody User body){
+        return "Hello world " + body.getName() + id + filter; //vai usar "nenhum" quando filter nao exister na URL
+    }
 }
