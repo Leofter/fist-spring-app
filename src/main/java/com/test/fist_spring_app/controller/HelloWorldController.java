@@ -1,9 +1,8 @@
 package com.test.fist_spring_app.controller;
 
+import com.test.fist_spring_app.domain.User;
 import com.test.fist_spring_app.service.HelloWorldService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // stateless -> (sempre enviando token) a cada nova requisiçao eu recebo todas as informacoes que eu preciso para fazer aquela funcionalidade
 // statefull -> o estado de cada cliente é mantido no seervidor
@@ -26,5 +25,12 @@ public class HelloWorldController {
     @GetMapping
     public String helloworld(){
         return helloWorldService.helloWorld("Leo");
+    }
+
+    //metodo de ver o que esta recebendo
+    @PostMapping("")
+    //estou falando para o sping para injetar no parametro body que é do tipo User tudo que vier de "post" do body, ele faz isso atraves do request body
+    public String helloWorldPost(@RequestBody User body){
+        return "Hello world " + body.getName();
     }
 }
