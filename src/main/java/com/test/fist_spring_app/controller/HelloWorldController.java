@@ -33,4 +33,10 @@ public class HelloWorldController {
     public String helloWorldPost(@RequestBody User body){
         return "Hello world " + body.getName();
     }
+
+    @PostMapping("/{id}")
+    //estou falando para o sping para injetar no parametro body que é do tipo User tudo que vier de "post" do body, ele faz isso atraves do request body
+    public String helloWorldPostWithID(@PathVariable("id") String id, @RequestBody User body){
+        return "Hello world " + body.getName() + id;
+    }
 }
